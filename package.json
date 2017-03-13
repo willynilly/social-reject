@@ -16,6 +16,7 @@
     "social rejection",
     "social exclusion"
   ],
+  "repository": "willynilly/social-reject",
   "author": "Will Riley <will@quietsimple.com> (http://willriley.net/)",
   "license": "ISC",
   "dependencies": {
