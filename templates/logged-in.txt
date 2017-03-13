@@ -1,0 +1,5 @@
+Logging in...
+
+There are {{:otherPlayerCount}} other players in the game with you:
+{{for otherPlayers}}
+{{:name}}{{/for}}

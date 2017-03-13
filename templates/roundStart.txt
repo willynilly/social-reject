@@ -1,0 +1,5 @@
+Round #{{:roundNumber}}
+
+{{:playerWithBall.name}} {{if playerWithBall.name == 'you'}}have{{else}}has{{/if}} the ball.
+
+{{:playerWithBall.name}} {{if playerWithBall.name == 'you'}}are{{else}}is{{/if}} thinking...

@@ -1,0 +1,23 @@
+{
+  "name": "rejected",
+  "version": "1.0.0",
+  "description": "An experiment to simulate social rejection.",
+  "main": "index.js",
+  "scripts": {
+    "start": "clear && node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "experiment",
+    "psychology"
+  ],
+  "author": "Will Riley <will@quietsimple.com> (http://willriley.net/)",
+  "license": "ISC",
+  "dependencies": {
+    "Faker": "^0.7.2",
+    "colors": "^1.1.2",
+    "inquirer": "^3.0.6",
+    "jsrender": "^0.9.84",
+    "lodash": "^4.17.4"
+  }
+}

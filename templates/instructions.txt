@@ -1,0 +1,17 @@
+Instructions:
+
+There will be {{:maxRoundCount}} rounds.
+
+Each round, a ball will be passed between two players.
+
+If you get the ball, you receive 1 point.
+
+If you have the ball, you must pass it to another player.
+
+The player with the most points after the last round wins {{:prizeDescription}}.
+
+If multiple players tie for the most points, then all of those players win {{:prizeDescription}}.
+
+A random player will begin with the ball.
+
+All players start out with 0 points.
