@@ -2,22 +2,52 @@
 
 const _ = require('lodash');
 const colors = require('colors');
+const commandLineArgs = require('command-line-args')
 
 const fileWriter = require('./file-writer');
 const promptQuestions = require('./prompt-questions');
 const templater = require('./templater');
 const Game = require('./game');
 
+const commandLineOptionDefinitions = [{
+        name: 'players',
+        alias: 'p',
+        type: Number,
+        defaultValue: 4
+    },
+    {
+        name: 'rounds',
+        alias: 'r',
+        type: Number,
+        defaultValue: 10
+    },
+    {
+        name: 'targetProbability',
+        alias: 't',
+        type: Number,
+        defaultValue: .2
+    },
+    {
+        name: 'maxDecisionDuration',
+        alias: 'd',
+        type: Number,
+        defaultValue: 3000
+    }
+];
+
+const commandLineValues = commandLineArgs(commandLineOptionDefinitions);
+
 const gameOptions = {
     name: 'Ball Game',
-    maxPlayerCount: 3,
-    maxRoundCount: 5,
+    maxPlayerCount: Math.max(2, Math.round(commandLineValues.players)),
+    maxRoundCount: Math.max(1, Math.round(commandLineValues.rounds)),
     prizeDescription: 'a piece of candy',
     mainPlayerName: 'you',
-    probabilityToPassToMainPlayer: .2,
+    probabilityToPassToMainPlayer: Math.min(1, Math.max(0, commandLineValues.targetProbability)),
     minWaitDuration: 200,
-    maxWaitDuration: 3000
+    maxWaitDuration: Math.max(200, Math.round(commandLineValues.maxDecisionDuration)),
 };
+
 const game = new Game(gameOptions);
 
 let experiment = {
