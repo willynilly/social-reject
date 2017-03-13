@@ -91,6 +91,23 @@ class Game {
         return this.options.maxRoundCount;
     }
 
+    determineWinners() {
+        let initialOutcome = {
+            maxPoints: 0,
+            winners: []
+        }
+        let outcome = _.reduce(this.players, (outcome, player) => {
+            if (player.points == outcome.maxPoints) {
+                outcome.winners.push(player);
+            } else if (player.points > outcome.maxPoints) {
+                outcome.maxPoints = player.points;
+                outcome.winners = [player];
+            }
+            return outcome;
+        }, initialOutcome);
+        this.winners = outcome.winners;
+    }
+
     nextRound() {
         return new Promise((resolve, reject) => {
             this.roundNumber += 1;
@@ -114,6 +131,7 @@ class Game {
                     });
                 } else {
                     this.stopTime = (new Date()).getTime();
+                    this.determineWinners();
                     resolve();
                 }
             }, (err) => {

@@ -98,22 +98,37 @@ function finish(readyToPlay) {
             return;
         });
     }
-    askPostTestQuestions().then((postTestAnswers) => {
-        experiment.postTestAnswers = postTestAnswers;
-        fileWriter.writeToFile('data', experiment).then(() => {
-            templater.print();
-            templater.print('thankyou', game);
-            process.exit();
-            return;
+
+    showWinner().then(() => {
+        askPostTestQuestions().then((postTestAnswers) => {
+            experiment.postTestAnswers = postTestAnswers;
+            fileWriter.writeToFile('data', experiment).then(() => {
+                templater.print();
+                templater.print('thankyou', game);
+                process.exit();
+                return;
+            }, (err) => {
+                templater.print();
+                templater.print('thankyou', game);
+                process.exit();
+                return;
+            });
         }, (err) => {
-            templater.print();
-            templater.print('thankyou', game);
+            console.log(err);
             process.exit();
-            return;
         });
     }, (err) => {
-        console.log(err);
+        templater.print();
+        templater.print('thankyou', game);
         process.exit();
+        return;
+    });
+}
+
+function showWinner() {
+    return new Promise((resolve, reject) => {
+        templater.print('winners', game);
+        resolve();
     });
 }
 

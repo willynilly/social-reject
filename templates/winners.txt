@@ -1,0 +1,4 @@
+The {{if winners.length == 1}}winner is{{else}}winners are{{/if}}:
+{{for winners}}
+    {{:name}}
+{{/for}}
