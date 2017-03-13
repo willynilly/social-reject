@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const _ = require('lodash');
 const colors = require('colors');
 
@@ -26,7 +28,7 @@ function intro(settings) {
 
     return new Promise((resolve, reject) => {
         templater.print();
-        templater.print('welcome', game);
+        templater.print('welcome', game.options);
 
         askPreTestQuestions().then((preTestAnswers) => {
             experiment.preTestAnswers = preTestAnswers;
