@@ -118,14 +118,9 @@ class Game {
             templater.print('roundStart', this);
             this.passBall().then(() => {
                 templater.print('roundEnd', this);
-
                 if (this.roundNumber < this.getMaxRoundCount()) {
-                    wait.waitForKeyPress('Press any key to begin the next round...').then(() => {
-                        this.nextRound().then(() => {
-                            resolve();
-                        }, (err) => {
-                            reject(err);
-                        });
+                    this.nextRound().then(() => {
+                        resolve();
                     }, (err) => {
                         reject(err);
                     });
@@ -152,7 +147,6 @@ class Game {
         return new Promise((resolve, reject) => {
             let round = this.round;
             round.fromPlayer = this.playerWithBall;
-
             if (round.fromPlayer.name != this.getMainPlayerName()) {
                 wait.randomWait(this.getMaxWaitDuration(), this.getMaxWaitDuration()).then(() => {
                     round.toPlayer = probably.getRandomElement(this.players, round.fromPlayer.passingProbabilityDistribution);
@@ -175,9 +169,7 @@ class Game {
                 }, (err) => {
                     reject(err);
                 });
-
             }
-
         });
     }
 }

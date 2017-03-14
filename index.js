@@ -31,7 +31,7 @@ const commandLineOptionDefinitions = [{
         name: 'maxDecisionDuration',
         alias: 'd',
         type: Number,
-        defaultValue: 3000
+        defaultValue: 6000
     }
 ];
 
@@ -42,7 +42,7 @@ const gameOptions = {
     maxPlayerCount: Math.max(2, Math.round(commandLineValues.players)),
     maxRoundCount: Math.max(1, Math.round(commandLineValues.rounds)),
     prizeDescription: 'a piece of candy',
-    mainPlayerName: 'you',
+    mainPlayerName: 'You',
     probabilityToPassToMainPlayer: Math.min(1, Math.max(0, commandLineValues.targetProbability)),
     minWaitDuration: 200,
     maxWaitDuration: Math.max(200, Math.round(commandLineValues.maxDecisionDuration)),
@@ -97,8 +97,8 @@ function askPreTestQuestions() {
         promptQuestions.ageQuestion(),
         promptQuestions.genderQuestion(),
         promptQuestions.raceQuestion(),
+        promptQuestions.ethnicityQuestion(),
         promptQuestions.scaleQuestion('friendshipSupport', 'I feel supported by my friends.'),
-
     ];
     experiment.preTestQuestions = preTestQuestions;
     let shouldShuffleQuestions = false;

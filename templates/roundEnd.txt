@@ -1,5 +1,5 @@
 {{:round.fromPlayer.name}} passed the ball to {{:round.toPlayer.name}}
-{{:round.toPlayer.name}} earned 1 point.  
+{{:round.toPlayer.name}} received 1 point.  
 
 Point Totals{{for players}}
-{{:name}} {{if name == 'you'}}have{{else}}has{{/if}} {{:points}} point(s).{{/for}}
+{{:name}} {{if name == 'You'}}have{{else}}has{{/if}} {{:points}} point(s).{{/for}}
